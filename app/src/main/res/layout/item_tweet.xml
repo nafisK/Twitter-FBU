@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="5dp">
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:id="@+id/ivProfileImage"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="5dp"
+        tools:srcCompat="@tools:sample/avatars" />
+
+    <TextView
+        android:id="@+id/tvScreenName"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:textSize="15dp"
+        android:textStyle="bold"
+        tools:text="Nafis Khan" />
+    
+
+    <TextView
+        android:id="@+id/createdAt"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginRight="0dp"
+        android:text="3d ago" />
+
+    <TextView
+        android:id="@+id/tvBody"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/tvScreenName"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_toEndOf="@+id/ivProfileImage"
+        android:text="This is sample description" />
+    
+    <ImageView
+        android:id="@+id/tweetMedia"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_marginTop="8dp"
+        android:layout_below="@+id/tvBody"/>
+
+    <Button
+        android:id="@+id/replyBtn"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/reply_button_focus"
+        android:layout_below="@+id/tweetMedia"
+        />
+
+    <View
+        android:id="@+id/horiDivider"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_below="@+id/replyBtn"
+        android:layout_marginTop="10dp"
+        android:background="?android:attr/listDivider" />
+
+
+
+
+
+</RelativeLayout>

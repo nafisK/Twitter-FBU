@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ComposeActivity">
+
+    <include layout="@layout/toolbar"/>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/post"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:counterEnabled="true"
+        app:counterMaxLength="140"
+        android:layout_below="@+id/toolbar"
+        app:counterTextAppearance="@style/counterText"
+        app:counterOverflowTextAppearance="@style/counterOverride">
+        <MultiAutoCompleteTextView
+            android:id="@+id/etCompose"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHighlight="#1DA1F2"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:hint="What's Happening"
+            android:minLines="5" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <Button
+        android:id="@+id/tweetButton"
+        android:layout_width="100dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/post"
+        android:layout_alignParentEnd="true"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
+        android:background="@drawable/tweet" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:visibility="gone"/>
+
+
+</RelativeLayout>
