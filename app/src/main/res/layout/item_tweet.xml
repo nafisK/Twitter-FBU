@@ -23,6 +23,17 @@
         android:textSize="15dp"
         android:textStyle="bold"
         tools:text="Nafis Khan" />
+
+    <TextView
+        android:id="@+id/userHandle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_toRightOf="@+id/tvScreenName"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:text="/@nafis_rk"
+        android:textStyle="italic"
+        />
     
 
     <TextView
@@ -41,6 +52,7 @@
         android:layout_below="@+id/tvScreenName"
         android:layout_marginStart="5dp"
         android:layout_marginTop="5dp"
+        android:autoLink="all"
         android:layout_toEndOf="@+id/ivProfileImage"
         android:text="This is sample description" />
     
@@ -62,6 +74,31 @@
         android:background="@drawable/reply_button_focus"
         android:layout_below="@+id/tweetMedia"
         />
+
+    <Button
+        android:id="@+id/heart"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_toLeftOf="@+id/replyBtn"
+        android:layout_marginRight="100dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/ic_vector_heart_stroke"
+        android:layout_below="@+id/tweetMedia"
+
+        />
+
+    <Button
+        android:id="@+id/retweet"
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:background="@drawable/ic_vector_retweet"
+        android:layout_toRightOf="@+id/replyBtn"
+        android:layout_below="@+id/tweetMedia"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="100dp"
+
+        />
+
 
     <View
         android:id="@+id/horiDivider"

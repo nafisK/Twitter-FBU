@@ -9,6 +9,7 @@
     app:title="Twitter"
     android:background="@color/twitter_blue"
     android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
+
     >
 
 

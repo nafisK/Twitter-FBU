@@ -1,19 +1,24 @@
-package com.codepath.apps.restclienttemplate;
+package com.codepath.apps.restclienttemplate.Activities;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.codepath.apps.restclienttemplate.R;
+import com.codepath.apps.restclienttemplate.TwitterApp;
+import com.codepath.apps.restclienttemplate.TwitterClient;
 import com.codepath.apps.restclienttemplate.models.Tweet;
+import com.codepath.apps.restclienttemplate.models.User;
 import com.codepath.asynchttpclient.callback.JsonHttpResponseHandler;
 
 import org.json.JSONException;
@@ -30,6 +35,12 @@ public class ComposeActivity extends AppCompatActivity {
     TwitterClient client;
     MenuItem miActionProgressItem;
     ProgressBar progressBar;
+    ImageView profileImage;
+    String profileImageUrl;
+    User user;
+    Boolean reply;
+    TextView tvHandle;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,8 +50,17 @@ public class ComposeActivity extends AppCompatActivity {
         progressBar = (ProgressBar) findViewById(R.id.progressBar);
         etCompose = findViewById(R.id.etCompose);
         tweetButton = findViewById(R.id.tweetButton);
+//        profileImage = findViewById(R.id.ivComposeProfileImage);
+//        tvHandle = findViewById(R.id.tvHandle);
+
+        reply = getIntent().getExtras().getBoolean("reply");
+//        profileImageUrl = getIntent().getStringExtra("profileImageUrl");
+//        user = (User) Parcels.unwrap(getIntent().getParcelableExtra("user"));
+        setUserHandle();
 
         client = TwitterApp.getRestClient(this);
+
+
 
         // Set click listener on button
         tweetButton.setOnClickListener(new View.OnClickListener() {
@@ -91,6 +111,20 @@ public class ComposeActivity extends AppCompatActivity {
             }
         });
 
+
     }
+
+    private void setUserHandle() {
+        String userHandle = getIntent().getStringExtra("screenName");
+        if (reply) {
+
+            etCompose.setText(String.format("@%s", userHandle));
+//            tvHandle.setText(String.format("@%s", user.screenName));
+//            Glide.with(ComposeActivity.this).load(user.profileImageUrl).into(profileImage);
+
+        }
+    }
+
+
 
 }

@@ -1,6 +1,13 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import android.provider.ContactsContract;
 import android.util.Log;
+
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.Ignore;
+import androidx.room.PrimaryKey;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -14,24 +21,47 @@ import java.util.List;
 import java.util.Locale;
 
 @Parcel
+@Entity(foreignKeys = @ForeignKey(entity= User.class, parentColumns="id", childColumns="userId"))
 public class Tweet {
 
     public static final String TAG = "Tweet";
+
+    @PrimaryKey
+    @ColumnInfo
+    public long id;
+
+    @ColumnInfo
     public String body;
+    @ColumnInfo
     public String createdAt;
+    @ColumnInfo
     public String mediaUrl;
+    @ColumnInfo
     public static String lowestMaxId;
+    @ColumnInfo
+    boolean retweeted;
+    @ColumnInfo
+    boolean favorited;
+
+    @Ignore
     public User user;
+
+    @ColumnInfo
+    public long userId;
 
     public Tweet() {
     }
 
     public static Tweet fromJson(JSONObject jsonObject) throws JSONException {
         Tweet tweet = new Tweet();
+        tweet.id = jsonObject.getLong("id");
         tweet.body = jsonObject.getString("text");
         tweet.createdAt = getRelativeTimeAgo(jsonObject.getString("created_at"));
         tweet.user = User.fromJson(jsonObject.getJSONObject("user"));
+        tweet.retweeted = jsonObject.getBoolean("retweeted");
+        tweet.favorited = jsonObject.getBoolean("favorited");
         JSONObject entities = jsonObject.getJSONObject("entities");
+        tweet.userId = tweet.user.id;
 
         if (entities.has("media")) {
             tweet.mediaUrl = entities.getJSONArray("media").getJSONObject(0).getString("media_url_https");
