@@ -90,6 +90,8 @@ public class Tweet {
         SimpleDateFormat sf = new SimpleDateFormat(twitterFormat, Locale.ENGLISH);
         sf.setLenient(true);
 
+        Log.e(TAG, "time: " + rawJsonDate);
+
         try {
             long time = sf.parse(rawJsonDate).getTime();
             long now = System.currentTimeMillis();
